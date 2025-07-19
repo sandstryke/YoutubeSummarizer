@@ -1,1 +1,1 @@
-# YoutubeSummarizer
+# This project is a web-based YouTube Video Summarizer that allows users to input a YouTube URL and receive a concise summary of the video's content. The app utilizes FastAPI for the backend and LangChain to process and summarize video transcripts.
