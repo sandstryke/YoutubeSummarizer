@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Summarizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 0; background-color: #f4f4f9; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; }
+        label, input, button { display: block; width: 100%; margin-bottom: 10px; }
+        input { padding: 10px; font-size: 16px; }
+        button { padding: 10px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .error { color: red; text-align: center; }
+        .summary { margin-top: 20px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ccc; }
+        /* Spinner styles */
+        .spinner { display: none; margin: 20px auto; text-align: center; }
+        .spinner img { width: 50px; height: 50px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>YouTube Video Summarizer</h1>
+    
+    <!-- Show error message if any -->
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    
+    <form method="POST" id="videoForm">
+        <label for="video_url">Enter YouTube Video URL:</label>
+        <input type="text" name="video_url" id="video_url" placeholder="Enter the YouTube video URL" required>
+        <button type="submit">Summarize Video</button>
+    </form>
+    
+    <!-- Show the loading spinner when processing -->
+    <div class="spinner" id="spinner">
+        <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading...">
+    </div>
+
+    {% if summary %}
+        <div class="summary">
+            <h2>Video Summary:</h2>
+            <p>{{ summary }}</p>  <!-- Corrected from summarypy to summary -->
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Show the spinner when the form is submitted
+    document.getElementById('videoForm').addEventListener('submit', function() {
+        document.getElementById('spinner').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
+
